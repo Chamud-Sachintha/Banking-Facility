@@ -16,7 +16,14 @@ public class Bank {
 	private String incooperateDate;
 	private int noOfStaff;
 	private int noOfBranches;
+	private String bankStatus;
 	
+	public String getBankStatus() {
+		return bankStatus;
+	}
+	public void setBankStatus(String bankStatus) {
+		this.bankStatus = bankStatus;
+	}
 	public long getBankId() {
 		return bankId;
 	}

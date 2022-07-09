@@ -34,4 +34,22 @@ public class BankService {
 	public void deleteBankById(long bankId) {
 		this.bankRepository.deleteById(bankId);
 	}
+	
+	public Bank updateBank(Long bankId,Bank bankDetails) {
+		Bank getSelectedBank = this.bankRepository.getById(bankId);
+		
+		if(getSelectedBank != null) {
+			getSelectedBank.setBankName(bankDetails.getBankName());
+			getSelectedBank.setIncooperateDate(bankDetails.getIncooperateDate());
+			getSelectedBank.setNoOfBranches(bankDetails.getNoOfBranches());
+			getSelectedBank.setNoOfStaff(bankDetails.getNoOfStaff());
+			getSelectedBank.setBankStatus(bankDetails.getBankStatus());
+		}
+		
+		return this.bankRepository.save(getSelectedBank);
+	}
+	
+	public Optional<Bank> getBankByStatus(String bankStatus){
+		return this.bankRepository.findByBankStatus(bankStatus);
+	}
 }
